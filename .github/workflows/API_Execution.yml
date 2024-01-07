@@ -2,7 +2,7 @@ name: API Test Execution
 
 on:
     push: 
-        branches: ["sd"]
+        branches: ["main"]
 jobs:
     SettingupEnv:
         runs-on: ubuntu-latest
@@ -20,16 +20,37 @@ jobs:
         needs: SettingupEnv
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-java@v3
+              with:
+                java-version: '17'
+                distribution: 'zulu'
             - name: build with maven
-              working-directory: "."
               run: |
-                pwd
+                ls
+                cd Automation
                 mvn clean
-    TestExecution:
+    TestExecutionandReports:
         needs: BuildProject
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-java@v3
+              with:
+                java-version: '17'
+                distribution: 'zulu'
             - name: Testcase execution
-              working-directory: "./"
-              run: mvn test -DsuiteXmlFile=testng.xml -Dmaven.test.failure.ignore=true -fae
+              run: |
+                ls
+                cd Automation
+                mvn test -DsuiteXmlFile=testng.xml -Dmaven.test.failure.ignore=true -fae
+            - name: upload Report
+              run: |
+                ls
+              if: always()
+            - uses: actions/upload-artifact@v2
+              with:
+                name: test-report
+                path: "./Extent"
+
 
