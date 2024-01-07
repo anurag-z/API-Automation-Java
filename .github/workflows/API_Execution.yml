@@ -45,11 +45,9 @@ jobs:
                 cd Automation
                 mvn test -DsuiteXmlFile=testng.xml -Dmaven.test.failure.ignore=true -fae
             - name: upload Report
-              if: always()
               run: |
                 ls
-                cd Automation
-                cd Extent
+              if: always()
             - uses: actions/upload-artifact@v2
               with:
                 name: test-report
