@@ -48,6 +48,8 @@ jobs:
               if: always()
               run: |
                 ls
+                cd Automation
+                cd Extent
             - uses: actions/upload-artifact@v2
               with:
                 name: test-report
