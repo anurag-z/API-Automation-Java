@@ -47,8 +47,8 @@ jobs:
             - name: upload Report
               if: always()
               run: |
-                    ls
-            - uses: actions/upload-artifacts@v2
+                ls
+            - uses: actions/upload-artifact@v2
               with:
                 name: test-report
                 path: "./Extent"
