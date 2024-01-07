@@ -49,10 +49,13 @@ jobs:
                 ls
                 cd Automation
                 ls
+                cd Extent
+                pwd
               if: always()
             - uses: actions/upload-artifact@v2
               with:
                 name: test-report
                 path: "./Extent"
+                
 
 
