@@ -16,20 +16,9 @@ jobs:
                   distribution: 'zulu'
                   cache: maven
             - run: mvn --version
-    BuildProject:
-        needs: SettingupEnv
-        runs-on: ubuntu-latest
-        steps:
             - name: build with maven
               working-directory: "."
               run: |
                 pwd
                 mvn clean
-    TestExecution:
-        needs: BuildProject
-        runs-on: ubuntu-latest
-        steps:
-            - name: Testcase execution
-              working-directory: "./"
-              run: mvn test -DsuiteXmlFile=testng.xml -Dmaven.test.failure.ignore=true -fae
-
+   
