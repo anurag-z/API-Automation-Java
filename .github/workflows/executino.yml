@@ -17,6 +17,8 @@ jobs:
                   cache: maven
             - run: mvn --version
             - name: build with maven
-              working-directory: "./API-Automation-Java/Automation"
-              run: mvn clean
+             
+              run: |
+                ls
+                pwd
    
