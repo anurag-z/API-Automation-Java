@@ -2,7 +2,7 @@ name: API Test Execution
 
 on:
     push: 
-        branches: ["main"]
+        branches: ["sd"]
 jobs:
     SettingupEnv:
         runs-on: ubuntu-latest
