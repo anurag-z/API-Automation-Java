@@ -21,13 +21,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: build with maven
-              working-directory: "./Automation"
+              working-directory: "./"
               run: mvn clean
     TestExecution:
         needs: BuildProject
         runs-on: ubuntu-latest
         steps:
             - name: Testcase execution
-              working-directory: "./Automation"
+              working-directory: "./"
               run: mvn test -Dmaven.test.failure.ignore=true -fae
 
