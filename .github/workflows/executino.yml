@@ -17,8 +17,9 @@ jobs:
                   cache: maven
             - run: mvn --version
             - name: build with maven
-              working-directory: "/Automation"
+              
               run: |
+                cd Automation
                 ls
                 pwd
    
