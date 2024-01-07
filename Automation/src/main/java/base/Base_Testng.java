@@ -10,12 +10,20 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 
+import org.testng.ITestClass;
 import org.testng.ITestContext;
+import org.testng.ITestNGMethod;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 import Reuseablelibrary.Reuseablecomponents;
 
@@ -48,14 +56,34 @@ public class Base_Testng {
 		report= new ExtentReports(path+"//extent"+strdate+".html",true);
 	}
 	
+	
 	@AfterSuite(alwaysRun = true)
 	public void stoptest()
 	{
+		
 		report.endTest(test);
 		report.flush();
 		
 	}
 	
+	
+	@AfterClass(alwaysRun = true)
+	public void bc(ITestContext context)
+	{
+		ITestNGMethod[] c= context.getAllTestMethods();
+		String cat="";
+		for (ITestNGMethod b : c) {
+	         if (b.getRealClass() == this.getClass()) {                  
+	            System.out.println(b.getTestClass().getName());
+	            cat=b.getTestClass().getName();
+	            
+	         }
+		}
+		
+		
+		System.out.println("before class");
+		
+	}
 	
 	public void readglobal() throws IOException
 	{
@@ -67,5 +95,7 @@ public class Base_Testng {
 		
 		
 	}
+	
+	
 	
 }
