@@ -50,6 +50,7 @@ jobs:
                 cd Automation
                 ls
                 cd Extent
+                ls
                 pwd
               if: always()
             - uses: actions/upload-artifact@v2
