@@ -45,7 +45,7 @@ public class Base_Testng {
 		String strdate= df.format(date);
 		String path=System.getProperty("user.dir");
 		readglobal();
-		File reportfile= new File(path+"//extent"+strdate+".html");
+		File reportfile= new File(path+"//Extent"+"//extent"+strdate+".html");
 		
 		if(!reportfile.exists())
 		{
@@ -53,7 +53,7 @@ public class Base_Testng {
 			
 		}
 		
-		report= new ExtentReports(path+"//extent"+strdate+".html",true);
+		report= new ExtentReports(path+"//Extent"+"//extent"+strdate+".html",true);
 	}
 	
 	

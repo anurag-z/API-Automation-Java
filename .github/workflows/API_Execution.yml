@@ -30,7 +30,7 @@ jobs:
                 ls
                 cd Automation
                 mvn clean
-    TestExecution:
+    TestExecutionandReports:
         needs: BuildProject
         runs-on: ubuntu-latest
         steps:
@@ -44,4 +44,12 @@ jobs:
                 ls
                 cd Automation
                 mvn test -DsuiteXmlFile=testng.xml -Dmaven.test.failure.ignore=true -fae
+            - name: upload Report
+              if: always()
+              uses: actions/upload-artifacts@v2
+              with:
+                name: test-report
+                run: |
+                    ls
+
 
