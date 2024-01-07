@@ -2,7 +2,7 @@ name: API Test Execution
 
 on:
     push: 
-        branches: ["sd"]
+        branches: ["main"]
 jobs:
     SettingupEnv:
         runs-on: ubuntu-latest
@@ -21,15 +21,15 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: build with maven
-              working-directory: "."
               run: |
-                pwd
+                cd Automation
                 mvn clean
     TestExecution:
         needs: BuildProject
         runs-on: ubuntu-latest
         steps:
             - name: Testcase execution
-              working-directory: "./"
-              run: mvn test -DsuiteXmlFile=testng.xml -Dmaven.test.failure.ignore=true -fae
+              run: |
+                cd Automation
+                mvn test -DsuiteXmlFile=testng.xml -Dmaven.test.failure.ignore=true -fae
 
