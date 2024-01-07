@@ -29,5 +29,5 @@ jobs:
         steps:
             - name: Testcase execution
               working-directory: "./"
-              run: mvn test -Dmaven.test.failure.ignore=true -fae
+              run: mvn test -DsuiteXmlFile=testng.xml -Dmaven.test.failure.ignore=true -fae
 
