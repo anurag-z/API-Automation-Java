@@ -17,7 +17,6 @@ jobs:
                   cache: maven
             - run: mvn --version
             - name: build with maven
-              working-directory: "."
               run: |
                 pwd
                 mvn clean
