@@ -17,7 +17,7 @@ jobs:
                   cache: maven
             - run: mvn --version
             - name: build with maven
-              working-directory: ${GITHUB_WORKSPACE}
+            
               run: |
                 echo  ${GITHUB_WORKSPACE}
                 mvn clean
