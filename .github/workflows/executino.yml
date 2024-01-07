@@ -22,6 +22,8 @@ jobs:
                 cd Automation
                 mvn clean
             - name: Testcase execution
-              run: mvn test -DsuiteXmlFile=testng.xml -Dmaven.test.failure.ignore=true -fae
+              run: |
+                cd Automation
+                mvn test -DsuiteXmlFile=testng.xml -Dmaven.test.failure.ignore=true -fae
   
    
