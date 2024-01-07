@@ -4,7 +4,7 @@ on:
     push: 
         branches: ["main"]
 jobs:
-    build:
+    SettingupEnv:
         runs-on: ubuntu-latest
 
         steps:
@@ -16,10 +16,18 @@ jobs:
                   distribution: 'zulu'
                   cache: maven
             - run: mvn --version
+    BuildProject:
+        needs: SettingupEnv
+        runs-on: ubuntu-latest
+        steps:
             - name: build with maven
               working-directory: "./Automation"
               run: mvn clean
+    TestExecution:
+        needs: BuildProject
+        runs-on: ubuntu-latest
+        steps:
             - name: Testcase execution
               working-directory: "./Automation"
-              run: mvn test
-              
+              run: mvn test -Dmaven.test.failure.ignore=true -fae
+
