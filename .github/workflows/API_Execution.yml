@@ -21,7 +21,8 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: build with maven
-              working-directory: "./"
+              
+              working-directory: "./Automation"
               run: mvn clean
     TestExecution:
         needs: BuildProject
