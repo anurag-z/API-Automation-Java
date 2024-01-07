@@ -23,7 +23,7 @@ jobs:
             - name: build with maven
               working-directory: "./Automation"
               run: |
-                echo pwd
+                pwd
                 mvn clean
     TestExecution:
         needs: BuildProject
